@@ -51,7 +51,7 @@ html {
   font-family: var(--font-body);
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1, "liga" 1;
-  background: var(--bg);
+  background-color: var(--bg);
   min-height: 100%;
 }
 
@@ -60,11 +60,12 @@ body {
   font-size: clamp(1.06rem, 2.7vw, 1.22rem);
   line-height: 1.72;
   color: var(--text);
-  background: var(--bg);
-  background-image:
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 8 L33 18 L43 18 L35 25 L38 35 L30 28 L22 35 L25 25 L17 18 L27 18 Z' fill='%23d4b483' fill-opacity='0.028'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='%23d4b483' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 60px 60px, 120px 120px;
+  /* Бір қабатты, тегіс повтор — екі әртүрлі tile өлшемі шеттерде «мозаика» жасамайды */
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 6 L26.5 14 L35 14 L28 19 L30.5 27 L24 22 L17.5 27 L20 19 L13 14 L21.5 14 Z' fill='%23d4b483' fill-opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 48px 48px;
+  background-repeat: repeat;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -76,6 +77,13 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
   position: relative;
   overflow-x: hidden;
+}
+
+/* iOS: fixed фон кейде секіреді — кіші экранда scroll */
+@media (max-width: 719px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 /* Қолданбалы оюлар — .page ішінде (мобильде fixed артында жоғалмау үшін) */
@@ -190,9 +198,8 @@ body {
 .page {
   width: min(720px, 100%);
   max-width: 720px;
-  background: rgba(248, 245, 240, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* Толықтай бір түсті — артқы фонмен шовсыз, «үш баған» эффектісі жоқ */
+  background: var(--bg);
   position: relative;
   z-index: 1;
   isolation: isolate;
@@ -201,14 +208,12 @@ body {
   margin: 0 auto;
   min-width: 0;
   padding: 0 clamp(10px, 3vw, 16px);
-  box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.08), 0 12px 48px rgba(43, 29, 14, 0.06);
+  box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.1), 0 8px 40px rgba(43, 29, 14, 0.05);
 }
 
 @media (max-width: 719px) {
   .page {
-    background: rgba(248, 245, 240, 0.58);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.08), 0 6px 28px rgba(43, 29, 14, 0.04);
   }
 }
 
@@ -607,6 +612,13 @@ body {
   letter-spacing: 0.06em;
   color: var(--text-mid);
   text-transform: lowercase;
+}
+
+/* Тойға дейін — «Жіберу» түймесінің астында */
+.countdown--under-submit {
+  margin-top: 1.35rem;
+  margin-bottom: 0.15rem;
+  max-width: 100%;
 }
 
 /* ═══════════════════════════════════════

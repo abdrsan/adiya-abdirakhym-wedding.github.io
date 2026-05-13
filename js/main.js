@@ -24,34 +24,48 @@
   }
 
   function tickCountdown() {
-    const elD = document.getElementById("cd-days");
-    const elH = document.getElementById("cd-hours");
-    const elMin = document.getElementById("cd-mins");
-    const elS = document.getElementById("cd-secs");
-    if (!elD || !elH || !elMin || !elS) return;
+    const pairs = [
+      ["cd-days", "cd-hours", "cd-mins", "cd-secs"],
+      ["cd-rsvp-days", "cd-rsvp-hours", "cd-rsvp-mins", "cd-rsvp-secs"],
+    ];
 
     const now = Date.now();
-    let sec = Math.floor((TARGET_MS - now) / 1000);
+    const totalSec = Math.floor((TARGET_MS - now) / 1000);
 
-    if (sec <= 0) {
-      elD.textContent = "0";
-      elH.textContent = "0";
-      elMin.textContent = "0";
-      elS.textContent = "0";
-      return;
+    let d = 0;
+    let h = 0;
+    let mi = 0;
+    let s = 0;
+
+    if (totalSec > 0) {
+      let sec = totalSec;
+      d = Math.floor(sec / 86400);
+      sec %= 86400;
+      h = Math.floor(sec / 3600);
+      sec %= 3600;
+      mi = Math.floor(sec / 60);
+      s = sec % 60;
     }
 
-    const d = Math.floor(sec / 86400);
-    sec %= 86400;
-    const h = Math.floor(sec / 3600);
-    sec %= 3600;
-    const mi = Math.floor(sec / 60);
-    const s = sec % 60;
+    for (const [idD, idH, idMin, idS] of pairs) {
+      const elD = document.getElementById(idD);
+      const elH = document.getElementById(idH);
+      const elMin = document.getElementById(idMin);
+      const elS = document.getElementById(idS);
+      if (!elD || !elH || !elMin || !elS) continue;
 
-    elD.textContent = String(d);
-    elH.textContent = pad2(h);
-    elMin.textContent = pad2(mi);
-    elS.textContent = pad2(s);
+      if (totalSec <= 0) {
+        elD.textContent = "0";
+        elH.textContent = "0";
+        elMin.textContent = "0";
+        elS.textContent = "0";
+      } else {
+        elD.textContent = String(d);
+        elH.textContent = pad2(h);
+        elMin.textContent = pad2(mi);
+        elS.textContent = pad2(s);
+      }
+    }
   }
 
   tickCountdown();
@@ -68,6 +82,7 @@
 
     backgroundMusic.volume = 0.3;
     let isPlaying = false;
+    let autoScrollPermanentlyDisabled = false;
     let scrollRaf = null;
     let scrollLastTs = 0;
     /** Пикселей в секунду — автоскролл вниз, пока играет музыка (можно руками крутить страницу) */
@@ -91,6 +106,10 @@
     }
 
     function slowScrollFrame(ts) {
+      if (autoScrollPermanentlyDisabled) {
+        scrollRaf = null;
+        return;
+      }
       if (!isPlaying || backgroundMusic.paused) {
         scrollRaf = null;
         return;
@@ -136,6 +155,7 @@
 
     /** Если доскроллили до низа и остановились — при ручном скролле вверх снова включить авто */
     function onScrollMaybeResumeAuto() {
+      if (autoScrollPermanentlyDisabled) return;
       if (!isPlaying || backgroundMusic.paused || scrollRaf != null) return;
       if (maxScrollY() - window.scrollY > 48) {
         scrollLastTs = 0;
@@ -145,6 +165,7 @@
     }
 
     function startSlowScroll() {
+      if (autoScrollPermanentlyDisabled) return;
       stopSlowScroll();
       detachAutoScrollListeners();
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -242,6 +263,12 @@
         }
       );
     });
+
+    window.__weddingDisableMusicAutoScroll = function () {
+      autoScrollPermanentlyDisabled = true;
+      detachAutoScrollListeners();
+      stopSlowScroll();
+    };
   }
 
   function initRsvpForm() {
@@ -397,6 +424,9 @@
 
         if (data && data.ok) {
           showStatus("Рақмет! Жауабыңыз жазылды.", "ok");
+          if (typeof window.__weddingDisableMusicAutoScroll === "function") {
+            window.__weddingDisableMusicAutoScroll();
+          }
           form.reset();
           guestCount = 1;
           renderGuests();

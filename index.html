@@ -92,7 +92,6 @@
     <p class="slabel">Күнтізбе</p>
     <div class="stitle stitle--calendar">Тамыз 2026</div>
     <div class="divl divl--tight"><div class="diam"></div></div>
-    <p class="calendar-date-hero">21 тамыз 2026</p>
     <p class="calendar-date-sub">жұма · 19:00</p>
     <div class="calendar-month-row">
       <span class="calendar-month-title">тамыз</span>
@@ -122,9 +121,9 @@
     <div class="stitle">Той өтетін орын</div>
     <div class="divl divl--tight"><div class="diam"></div></div>
     <p class="rsvp-note">
-      Шымкент, проспект Байдібек би — мекенді <strong>2GIS</strong> арқылы ашыңыз.
+      Шымкент қаласы, <strong>Байдібек би даңғылы, 136/6в</strong> — нақты нүктені <strong>2GIS</strong> арқылы ашыңыз.
     </p>
-    <a class="btn-2gis" href="https://2gis.kz/shymkent/search/%D0%91%D0%B0%D0%B9%D0%B4%D1%96%D0%B1%D0%B5%D0%BA%20%D0%B1%D0%B8" target="_blank" rel="noopener noreferrer">
+    <a class="btn-2gis" href="https://go.2gis.com/LApSs" target="_blank" rel="noopener noreferrer">
       2GIS-те ашу
     </a>
   </div>
@@ -191,6 +190,28 @@
         <span id="rsvpSubmitSpinner" class="rsvp-submit__spinner" hidden aria-hidden="true"></span>
       </button>
     </form>
+
+    <div class="countdown countdown--under-submit" id="rsvp-countdown" aria-live="polite">
+      <p class="countdown__label">Тойға дейін</p>
+      <div class="countdown__grid" role="timer">
+        <div class="countdown__cell">
+          <span class="countdown__num" id="cd-rsvp-days">—</span>
+          <span class="countdown__unit">күн</span>
+        </div>
+        <div class="countdown__cell">
+          <span class="countdown__num" id="cd-rsvp-hours">—</span>
+          <span class="countdown__unit">сағ</span>
+        </div>
+        <div class="countdown__cell">
+          <span class="countdown__num" id="cd-rsvp-mins">—</span>
+          <span class="countdown__unit">мин</span>
+        </div>
+        <div class="countdown__cell">
+          <span class="countdown__num" id="cd-rsvp-secs">—</span>
+          <span class="countdown__unit">сек</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -209,39 +230,6 @@
     <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".5"/>
   </svg>
 </div>
-
-<div class="hero-footer">
-  <div class="countdown" id="countdown" aria-live="polite">
-    <p class="countdown__label">Тойға дейін</p>
-    <div class="countdown__grid" role="timer">
-      <div class="countdown__cell">
-        <span class="countdown__num" id="cd-days">—</span>
-        <span class="countdown__unit">күн</span>
-      </div>
-      <div class="countdown__cell">
-        <span class="countdown__num" id="cd-hours">—</span>
-        <span class="countdown__unit">сағ</span>
-      </div>
-      <div class="countdown__cell">
-        <span class="countdown__num" id="cd-mins">—</span>
-        <span class="countdown__unit">мин</span>
-      </div>
-      <div class="countdown__cell">
-        <span class="countdown__num" id="cd-secs">—</span>
-        <span class="countdown__unit">сек</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="date-row date-row--stack" role="group" aria-label="Той күні мен уақыты">
-
-  <p class="address">
-    Шымкент қаласы<br>
-    проспект Байдібек би
-  </p>
-</div>
-</section>
-
 </div><!-- .page -->
 
 <script src="js/main.js"></script>
