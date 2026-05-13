@@ -68,6 +68,97 @@
 
     backgroundMusic.volume = 0.3;
     let isPlaying = false;
+    let scrollRaf = null;
+    let scrollLastTs = 0;
+    /** Пикселей в секунду — автоскролл вниз, пока играет музыка (можно руками крутить страницу) */
+    const SCROLL_PX_PER_SEC = 42;
+    /** Пауза автоскролла после прокрутки вверх колёсиком / тачпадом */
+    const USER_SCROLL_PAUSE_MS = 4500;
+    let autoScrollPausedUntil = 0;
+    let lastScrollY = 0;
+
+    function stopSlowScroll() {
+      if (scrollRaf != null) {
+        cancelAnimationFrame(scrollRaf);
+        scrollRaf = null;
+      }
+      scrollLastTs = 0;
+      lastScrollY = 0;
+    }
+
+    function maxScrollY() {
+      return document.documentElement.scrollHeight - window.innerHeight;
+    }
+
+    function slowScrollFrame(ts) {
+      if (!isPlaying || backgroundMusic.paused) {
+        scrollRaf = null;
+        return;
+      }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        scrollRaf = null;
+        return;
+      }
+      const y = window.scrollY;
+      if (y < lastScrollY - 6) {
+        autoScrollPausedUntil = performance.now() + USER_SCROLL_PAUSE_MS;
+      }
+      lastScrollY = y;
+
+      if (!scrollLastTs) scrollLastTs = ts;
+      const dt = Math.min(0.05, (ts - scrollLastTs) / 1000);
+      scrollLastTs = ts;
+
+      const maxY = maxScrollY();
+      const room = maxY - y;
+
+      if (room <= 0.5) {
+        scrollRaf = null;
+        return;
+      }
+
+      if (performance.now() < autoScrollPausedUntil) {
+        scrollRaf = requestAnimationFrame(slowScrollFrame);
+        return;
+      }
+
+      window.scrollBy(0, Math.min(SCROLL_PX_PER_SEC * dt, room));
+      lastScrollY = window.scrollY;
+      scrollRaf = requestAnimationFrame(slowScrollFrame);
+    }
+
+    function onWheelUserIntent(e) {
+      if (!isPlaying || backgroundMusic.paused) return;
+      if (e.deltaY < -2) {
+        autoScrollPausedUntil = performance.now() + USER_SCROLL_PAUSE_MS;
+      }
+    }
+
+    /** Если доскроллили до низа и остановились — при ручном скролле вверх снова включить авто */
+    function onScrollMaybeResumeAuto() {
+      if (!isPlaying || backgroundMusic.paused || scrollRaf != null) return;
+      if (maxScrollY() - window.scrollY > 48) {
+        scrollLastTs = 0;
+        lastScrollY = window.scrollY;
+        scrollRaf = requestAnimationFrame(slowScrollFrame);
+      }
+    }
+
+    function startSlowScroll() {
+      stopSlowScroll();
+      detachAutoScrollListeners();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      scrollLastTs = 0;
+      lastScrollY = window.scrollY;
+      window.addEventListener("wheel", onWheelUserIntent, { passive: true });
+      window.addEventListener("scroll", onScrollMaybeResumeAuto, { passive: true });
+      scrollRaf = requestAnimationFrame(slowScrollFrame);
+    }
+
+    function detachAutoScrollListeners() {
+      window.removeEventListener("wheel", onWheelUserIntent);
+      window.removeEventListener("scroll", onScrollMaybeResumeAuto);
+    }
 
     const removeStarters = () => {
       document.removeEventListener("click", startMusic);
@@ -78,6 +169,8 @@
     };
 
     const setPausedUI = () => {
+      detachAutoScrollListeners();
+      stopSlowScroll();
       iconOff.style.display = "";
       iconOn.style.display = "none";
       label.textContent = "Әуенді қосу";
@@ -91,13 +184,14 @@
       label.textContent = "Әуенді өшіру";
       musicBtn.classList.add("music-hero-btn--playing");
       musicBtn.setAttribute("aria-pressed", "true");
+      startSlowScroll();
     };
 
     const playMusic = () => {
       backgroundMusic.play().then(
         () => {
-          setPlayingUI();
           isPlaying = true;
+          setPlayingUI();
         },
         () => {
           label.textContent = "Музыка қосылмады";
@@ -122,8 +216,8 @@
       if (isPlaying) return;
       backgroundMusic.play().then(
         () => {
-          setPlayingUI();
           isPlaying = true;
+          setPlayingUI();
           removeStarters();
         },
         () => {}
@@ -139,8 +233,8 @@
       }
       backgroundMusic.play().then(
         () => {
-          setPlayingUI();
           isPlaying = true;
+          setPlayingUI();
         },
         () => {
           label.textContent = "Музыка қосылмады";

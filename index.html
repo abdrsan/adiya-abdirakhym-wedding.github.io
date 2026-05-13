@@ -90,9 +90,13 @@
 <section class="sec date-calendar-section" data-r id="calendar">
   <div class="content-card content-card--accent">
     <p class="slabel">Күнтізбе</p>
-    <div class="stitle">Тамыз 2026</div>
+    <div class="stitle stitle--calendar">Тамыз 2026</div>
     <div class="divl divl--tight"><div class="diam"></div></div>
+    <p class="calendar-date-hero">21 тамыз 2026</p>
+    <p class="calendar-date-sub">жұма · 19:00</p>
     <div class="calendar-month-row">
+      <span class="calendar-month-title">тамыз</span>
+      <span class="calendar-year-num">2026</span>
     </div>
     <div class="calendar-grid-wrap">
       <div class="calendar-weekdays" aria-hidden="true">
@@ -107,28 +111,22 @@
         <span>31</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span>
       </div>
     </div>
-    <p class="calendar-note">Той күні: <strong>21 тамыз 2026</strong>, жұма · 19:00</p>
+    <p class="calendar-note">Той күні: <strong class="calendar-note__date">21 тамыз 2026</strong><span class="calendar-note__meta">, жұма · 19:00</span></p>
   </div>
 </section>
 
-<!-- Карта: нақты src қойыңыз (мысалы 2GIS немесе Google Maps embed) -->
+<!-- Карта: 2GIS сілтемесі (нақты объект ID қойыңыз) -->
 <section class="sec alt" data-r id="map">
   <div class="content-card">
     <p class="slabel">Карта</p>
     <div class="stitle">Той өтетін орын</div>
     <div class="divl divl--tight"><div class="diam"></div></div>
     <p class="rsvp-note">
-      Төменде карта көрсетіледі. Нақты мекенге <strong>2GIS</strong> немесе <strong>Google Maps</strong> встраивание сілтемесін қойыңыз.
+      Шымкент, проспект Байдібек би — мекенді <strong>2GIS</strong> арқылы ашыңыз.
     </p>
-  <!--
-    2GIS мысалы:
-    <iframe src="https://2gis.kz/shymkent/geo/ОБЪЕКТ_ID?embedded=true" ...></iframe>
-  -->
-  <div class="map-wrap">
-    <iframe title="Той өтетін орын — Байдібек би, Шымкент"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47697.6!2d69.5175!3d42.3000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38941c21f8b0fc63%3A0x87db00e9de2a4d36!2sShymkent!5e0!3m2!1sru!2skz!4v1715500000000"
-      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
+    <a class="btn-2gis" href="https://2gis.kz/shymkent/search/%D0%91%D0%B0%D0%B9%D0%B4%D1%96%D0%B1%D0%B5%D0%BA%20%D0%B1%D0%B8" target="_blank" rel="noopener noreferrer">
+      2GIS-те ашу
+    </a>
   </div>
 </section>
 
@@ -136,59 +134,6 @@
   <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
     <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
     <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".5"/>
-  </svg>
-</div>
-
-<!-- Дресс-код + палитра (бір секция, қайталанбайды) -->
-<section class="sec" data-r id="dress">
-  <div class="content-card content-card--text-start">
-    <p class="slabel">Киім коды</p>
-    <div class="stitle">Дресс-код және түстер</div>
-    <div class="divl divl--tight"><div class="diam"></div></div>
-
-    <div class="sbody sbody--plain dress-lead">
-      <strong>Стиль:</strong> нәзік кешкі немесе ұлттық үлгідегі киім.
-    </div>
-
-    <div class="dress-code-content">
-    <p><strong>ТОЙ ҚОНАҚТАРЫНА АРНАЛҒАН ТҮС ПАЛИТРАСЫ</strong></p>
-
-    <p style="margin-top:.9rem"><strong>ҰСЫНЫЛАТЫН РЕҢКТЕР</strong></p>
-    <p class="color-list color-list--readable">
-      Айвори · Ақ · Нәзік қызғылт · Пудралы ·<br>
-      Лавандалы · Аспанды қызғылт · Көгілдір ·<br>
-      Жалбыздай жасыл · Алтын
-    </p>
-
-    <p style="margin-top:.9rem"><strong>БЕЙТАРАП АКЦЕНТТЕР</strong></p>
-    <p class="color-list color-list--readable">
-      Мокко · Латте · Эвкалипт · Слива · Тұман · Тақтатас
-    </p>
-
-    <p style="margin-top:.9rem"><strong style="color:var(--red)">ӨТІНЕМІЗ, МЫНАЛАРДАН АУЛАҚ БОЛЫҢЫЗ:</strong></p>
-    <p class="color-list color-list--readable">
-      Ақ / Айвори · Жарқыраған алтын · Күй қара ·<br>
-      Ашық қызыл · Неон реңктер
-    </p>
-
-    <p style="margin-top:1.1rem"><strong>КИІМ СТИЛІ</strong></p>
-    <div class="dress-code-image" style="text-align:center;margin:1rem 0">
-      <img src="assets/c2d1bb77-e08f-4009-86e2-de159f0e340c.png"
-           alt="Киім стилінің үлгісі"
-           loading="lazy"
-           style="max-width:100%;height:auto">
-    </div>
-
-    <p class="dress-thanks">Күніміздi одан сәулелі ете түскеніңіз үшін рақмет!</p>
-  </div>
-  </div>
-</section>
-
-<div class="orn-divider" aria-hidden="true" style="opacity:.28;background:var(--bg)">
-  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
-    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
-    <path d="M0 20 L520 20" stroke="currentColor" stroke-width=".5" opacity=".3"/>
-    <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".55"/>
   </svg>
 </div>
 
@@ -288,13 +233,7 @@
     </div>
   </div>
 
-  <div class="date-row">
-    <span>21 тамыз 2026</span>
-    <span class="dsep"></span>
-    <span>Жұма</span>
-    <span class="dsep"></span>
-    <span>19:00</span>
-  </div>
+  <div class="date-row date-row--stack" role="group" aria-label="Той күні мен уақыты">
 
   <p class="address">
     Шымкент қаласы<br>

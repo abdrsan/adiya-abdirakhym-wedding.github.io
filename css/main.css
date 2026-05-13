@@ -296,12 +296,14 @@ body {
   line-height: 1.75;
 }
 
-/* Әуен — hero оң жоғары, «пилюля» түймесі */
+/* Әуен — hero үстінде ортасында */
 .music-hero-btn {
   position: absolute;
   z-index: 8;
   top: max(12px, env(safe-area-inset-top, 0px));
-  right: max(12px, env(safe-area-inset-right, 0px));
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -325,15 +327,17 @@ body {
   background: rgba(26, 15, 6, 0.78);
   border-color: var(--gold);
   box-shadow: 0 0 20px rgba(212, 180, 131, 0.25);
+  transform: translateX(-50%);
 }
 
 .music-hero-btn:active {
-  transform: scale(0.98);
+  transform: translateX(-50%) scale(0.98);
 }
 
 .music-hero-btn--playing {
   border-color: rgba(212, 180, 131, 0.55);
   background: rgba(26, 15, 6, 0.82);
+  transform: translateX(-50%);
 }
 
 .music-hero-btn__glyph {
@@ -591,7 +595,7 @@ body {
 }
 .countdown__num {
   font-family: var(--font-names);
-  font-weight: 700;
+  font-weight: 800;
   font-style: italic;
   font-size: clamp(1.35rem, 5vw, 1.85rem);
   line-height: 1;
@@ -613,6 +617,33 @@ body {
   padding-bottom: clamp(0.5rem, 2vw, 0.85rem);
 }
 
+/* Күнтізбе: алдымен үлкен күн, содан кейін ай/жыл сеткасы */
+.stitle--calendar {
+  font-size: clamp(1.65rem, 5vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.calendar-date-hero {
+  font-family: var(--font-names);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1.85rem, 6.2vw, 2.45rem);
+  color: var(--text);
+  line-height: 1.15;
+  margin: 0.35rem 0 0.2rem;
+  letter-spacing: 0.02em;
+}
+
+.calendar-date-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 0.08em;
+  margin: 0 0 0.85rem;
+}
+
 .content-card--accent {
   max-width: min(22.5rem, 100%);
 }
@@ -630,17 +661,18 @@ body {
 .calendar-month-title {
   font-family: var(--font-names);
   font-style: italic;
-  font-size: clamp(1.5rem, 5vw, 1.85rem);
-  font-weight: 600;
+  font-size: clamp(1.65rem, 5.2vw, 2rem);
+  font-weight: 700;
   color: var(--text);
   text-transform: lowercase;
 }
 
 .calendar-year-num {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(1.15rem, 3vw, 1.35rem);
   color: var(--muted);
   letter-spacing: 0.12em;
+  font-weight: 600;
 }
 
 .calendar-grid-wrap {
@@ -657,10 +689,10 @@ body {
 .calendar-weekdays span {
   text-align: center;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: clamp(0.76rem, 2.2vw, 0.82rem);
   letter-spacing: 0.06em;
   color: var(--text-mid);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .calendar-grid {
@@ -671,12 +703,13 @@ body {
 
 .calendar-grid > span {
   text-align: center;
-  padding: 0.45rem 0.1rem;
+  padding: 0.5rem 0.12rem;
   font-family: var(--font-names);
-  font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+  font-size: clamp(0.92rem, 3vw, 1.08rem);
+  font-weight: 600;
   color: var(--text);
   border-radius: var(--radius-sm);
-  min-height: 2.35rem;
+  min-height: 2.55rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -701,10 +734,11 @@ body {
 
 /* Число из разметки; сердце под текстом (симметричный контур, без «двойного» центра) */
 .cal-highlight {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text);
   position: relative;
   line-height: 1;
+  font-size: clamp(1rem, 3.2vw, 1.12rem);
 }
 
 .cal-highlight::before {
@@ -712,8 +746,8 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 2.65rem;
-  height: 2.65rem;
+  width: 2.85rem;
+  height: 2.85rem;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -751,16 +785,25 @@ body {
   padding-top: 0.85rem;
   border-top: 1px solid var(--calendar-border);
   font-family: var(--font-body);
-  font-size: clamp(1.02rem, 2.8vw, 1.12rem);
+  font-size: clamp(1.08rem, 3vw, 1.22rem);
   color: var(--body-read);
   font-style: normal;
-  line-height: 1.7;
+  line-height: 1.65;
+  font-weight: 500;
 }
 
-.calendar-note strong {
+.calendar-note strong,
+.calendar-note__date {
   font-style: normal;
   color: var(--text);
+  font-weight: 800;
+  font-size: clamp(1.12rem, 3.2vw, 1.28rem);
+  font-family: var(--font-names);
+}
+
+.calendar-note__meta {
   font-weight: 600;
+  color: var(--text-mid);
 }
 
 .form-hint {
@@ -885,6 +928,38 @@ body {
   border-radius: 999px;
   padding: 0.55rem 1.1rem;
   max-width: 100%;
+}
+
+/* Той күні: алдымен күн (үлкен), содан кейін апта күні мен уақыт */
+.date-row--stack {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+.date-row__primary {
+  font-family: var(--font-names);
+  font-style: italic;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+  letter-spacing: 0.03em;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.date-row__sub {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
 }
 .hero-footer .date-row {
   margin-top: 0.35rem;
@@ -1259,6 +1334,37 @@ body {
   }
 }
 
+/* ─── 2GIS сілтемесі (карта орны) ─── */
+.btn-2gis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold-dark);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: #1a0f06;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.8vw, 1.08rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-2gis:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-2gis:active {
+  transform: translateY(0);
+}
+
 /* ─── EMBED / MAP ─── */
 .embed-wrap {
   border: 1px solid var(--border);
@@ -1417,7 +1523,7 @@ code {
     font-size: clamp(1rem, 3.5vw, 1.12rem); 
     line-height: 1.68;
   }
-  .date-row { 
+  .date-row:not(.date-row--stack) { 
     font-size: .85rem;
     gap: .5rem;
   }
