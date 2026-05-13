@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Әдия & Әбдірахым — Тойға шақыру</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="page">
+<div class="bg-spin-layer" aria-hidden="true">
+  <div class="bg-spin bg-spin--1"></div>
+  <div class="bg-spin bg-spin--2"></div>
+  <div class="bg-spin bg-spin--3"></div>
+  <div class="bg-spin bg-spin--4"></div>
+</div>
+<audio id="backgroundMusic" loop playsinline preload="metadata" hidden>
+  <source src="assets/audio.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO: фото + имена на фото, таймер, дата, қала -->
+<section class="hero" id="hero">
+  <div class="hero-photo" id="hero-photo">
+    <!-- Қойыңыз: assets/hero.jpg (сурет жоқ болса, төменгі фон қалды) -->
+    <img class="hero-photo__img"
+         src="assets/hero.jpg"
+         alt="Әдия мен Әбдірахым"
+         width="1200"
+         height="1500"
+         fetchpriority="high"
+         onerror="this.closest('.hero-photo').classList.add('hero-photo--fallback')">
+    <div class="hero-photo__scrim" aria-hidden="true"></div>
+
+    <button type="button" class="music-hero-btn" id="musicToggle" aria-pressed="false" aria-label="Фондық әуен">
+      <span id="musicIconOff" class="music-hero-btn__glyph" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V6l12 6-12 6z"/>
+          <line x1="3" y1="3" x2="21" y2="21"/>
+        </svg>
+      </span>
+      <span id="musicIconOn" class="music-hero-btn__glyph music-hero-btn__glyph--on" style="display:none" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V6l12 6-12 6z"/>
+        </svg>
+      </span>
+      <span class="music-hero-btn__text">Әуенді қосу</span>
+    </button>
+
+    <div class="hero-photo__content" data-r>
+      <p class="hero-photo__kicker">Үйлену тойына шақыру</p>
+      <div class="divl divl--on-photo"><div class="diam diam--on-photo"></div></div>
+      <div class="names names--on-photo">
+        Әдия<br>
+        <span class="amp amp--on-photo">&amp;</span>
+        Әбдірахым
+      </div>
+    </div>
+  </div>
+
+<!-- Приглашение от родителей -->
+<section class="sec alt" data-r id="parents">
+  <div class="content-card">
+    <p class="slabel">Той иелерінен</p>
+    <div class="stitle">Шақыру</div>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+
+    <p class="invite-text">
+      Сіздерді<br>
+      ұлымыз Әбдірахым пен келінімз<br>
+      Әдияның үйлену тойына<br>
+      арналған салтанатты дастарханымыздың<br>
+      қадірлі қонағы болуға шақырамыз!
+    </p>
+
+    <div class="divl divl--tight"><div class="diam"></div></div>
+
+    <p class="hosts-l">Той иелері:</p>
+    <div class="hosts-n">Әбдімәлік &amp; Айгүл</div>
+  </div>
+</section>
+
+<!-- Күнтізбе: тамыз 2026, той күні — 21 -->
+<section class="sec date-calendar-section" data-r id="calendar">
+  <div class="content-card content-card--accent">
+    <p class="slabel">Күнтізбе</p>
+    <div class="stitle">Тамыз 2026</div>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+    <div class="calendar-month-row">
+      <span class="calendar-month-title">тамыз</span>
+      <span class="calendar-year-num">2026</span>
+    </div>
+    <div class="calendar-grid-wrap">
+      <div class="calendar-weekdays" aria-hidden="true">
+        <span>Дү</span><span>Се</span><span>Сә</span><span>Бе</span><span>Жұ</span><span>Сн</span><span>Жк</span>
+      </div>
+      <div class="calendar-grid">
+        <span class="cal-muted">27</span><span class="cal-muted">28</span><span class="cal-muted">29</span><span class="cal-muted">30</span><span class="cal-muted">31</span><span>1</span><span>2</span>
+        <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+        <span>17</span><span>18</span><span>19</span><span>20</span><span class="cal-highlight">21</span><span>22</span><span>23</span>
+        <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+        <span>31</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span><span class="cal-empty">&nbsp;</span>
+      </div>
+    </div>
+    <p class="calendar-note">Той күні: <strong>21 тамыз 2026</strong>, жұма · 19:00</p>
+  </div>
+</section>
+
+<div class="orn-divider orn-divider--flip" aria-hidden="true" style="opacity:.28;background:var(--bg2)">
+  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <path d="M0 20 Q13 10 26 20 Q39 30 52 20 Q65 10 78 20 Q91 30 104 20 Q117 10 130 20 Q143 30 156 20 Q169 10 182 20 Q195 30 208 20 Q221 10 234 20 Q247 30 260 20 Q273 10 286 20 Q299 30 312 20 Q325 10 338 20 Q351 30 364 20 Q377 10 390 20 Q403 30 416 20 Q429 10 442 20 Q455 30 468 20 Q481 10 494 20 Q507 30 520 20" stroke="currentColor" stroke-width=".7" opacity=".4" fill="none"/>
+    <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".5"/>
+  </svg>
+</div>
+
+<div class="hero-footer">
+  <div class="countdown" id="countdown" aria-live="polite">
+    <p class="countdown__label">Тойға дейін</p>
+    <div class="countdown__grid" role="timer">
+      <div class="countdown__cell">
+        <span class="countdown__num" id="cd-days">—</span>
+        <span class="countdown__unit">күн</span>
+      </div>
+      <div class="countdown__cell">
+        <span class="countdown__num" id="cd-hours">—</span>
+        <span class="countdown__unit">сағ</span>
+      </div>
+      <div class="countdown__cell">
+        <span class="countdown__num" id="cd-mins">—</span>
+        <span class="countdown__unit">мин</span>
+      </div>
+      <div class="countdown__cell">
+        <span class="countdown__num" id="cd-secs">—</span>
+        <span class="countdown__unit">сек</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="date-row">
+    <span>21 тамыз 2026</span>
+    <span class="dsep"></span>
+    <span>Жұма</span>
+    <span class="dsep"></span>
+    <span>19:00</span>
+  </div>
+
+  <p class="address">
+    Шымкент қаласы<br>
+    проспект Байдібек би
+  </p>
+</div>
+</section>
+
+
+<!-- Детали: тек дата, уақыт, мекен (дресс-код бір секцияда төмен) -->
+<section class="sec" data-r id="details">
+  <div class="content-card">
+    <p class="slabel">Мәлімет</p>
+    <div class="stitle">Той туралы</div>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+
+    <div class="sbody sbody--plain">
+      <strong>Күні:</strong> 21 тамыз 2026 жыл, жұма<br><br>
+      <strong>Уақыты:</strong> сағат 19:00<br><br>
+      <strong>Мекен-жайы:</strong><br>
+      Шымкент қаласы, проспект Байдібек би
+    </div>
+  </div>
+</section>
+
+<div class="orn-divider" aria-hidden="true" style="opacity:.28;background:var(--bg)">
+  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <path d="M0 20 L520 20" stroke="currentColor" stroke-width=".5" opacity=".3"/>
+    <rect x="122" y="16" width="8" height="8" transform="rotate(45 126 20)" stroke="currentColor" stroke-width="1" fill="none" opacity=".7"/>
+    <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".55"/>
+    <rect x="390" y="16" width="8" height="8" transform="rotate(45 394 20)" stroke="currentColor" stroke-width="1" fill="none" opacity=".7"/>
+  </svg>
+</div>
+
+
+<!-- Карта: нақты src қойыңыз (мысалы 2GIS немесе Google Maps embed) -->
+<section class="sec alt" data-r id="map">
+  <div class="content-card">
+    <p class="slabel">Карта</p>
+    <div class="stitle">Той өтетін орын</div>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+    <p class="rsvp-note">
+      Төменде карта көрсетіледі. Нақты мекенге <strong>2GIS</strong> немесе <strong>Google Maps</strong> встраивание сілтемесін қойыңыз.
+    </p>
+  <!--
+    2GIS мысалы:
+    <iframe src="https://2gis.kz/shymkent/geo/ОБЪЕКТ_ID?embedded=true" ...></iframe>
+  -->
+  <div class="map-wrap">
+    <iframe title="Той өтетін орын — Байдібек би, Шымкент"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47697.6!2d69.5175!3d42.3000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38941c21f8b0fc63%3A0x87db00e9de2a4d36!2sShymkent!5e0!3m2!1sru!2skz!4v1715500000000"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  </div>
+</section>
+
+<div class="orn-divider orn-divider--flip" aria-hidden="true" style="opacity:.28;background:var(--bg2)">
+  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".5"/>
+  </svg>
+</div>
+
+<!-- Дресс-код + палитра (бір секция, қайталанбайды) -->
+<section class="sec" data-r id="dress">
+  <div class="content-card content-card--text-start">
+    <p class="slabel">Киім коды</p>
+    <div class="stitle">Дресс-код және түстер</div>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+
+    <div class="sbody sbody--plain dress-lead">
+      <strong>Стиль:</strong> нәзік кешкі немесе ұлттық үлгідегі киім.
+    </div>
+
+    <div class="dress-code-content">
+    <p><strong>ТОЙ ҚОНАҚТАРЫНА АРНАЛҒАН ТҮС ПАЛИТРАСЫ</strong></p>
+
+    <p style="margin-top:.9rem"><strong>ҰСЫНЫЛАТЫН РЕҢКТЕР</strong></p>
+    <p class="color-list color-list--readable">
+      Айвори · Ақ · Нәзік қызғылт · Пудралы ·<br>
+      Лавандалы · Аспанды қызғылт · Көгілдір ·<br>
+      Жалбыздай жасыл · Алтын
+    </p>
+
+    <p style="margin-top:.9rem"><strong>БЕЙТАРАП АКЦЕНТТЕР</strong></p>
+    <p class="color-list color-list--readable">
+      Мокко · Латте · Эвкалипт · Слива · Тұман · Тақтатас
+    </p>
+
+    <p style="margin-top:.9rem"><strong style="color:var(--red)">ӨТІНЕМІЗ, МЫНАЛАРДАН АУЛАҚ БОЛЫҢЫЗ:</strong></p>
+    <p class="color-list color-list--readable">
+      Ақ / Айвори · Жарқыраған алтын · Күй қара ·<br>
+      Ашық қызыл · Неон реңктер
+    </p>
+
+    <p style="margin-top:1.1rem"><strong>КИІМ СТИЛІ</strong></p>
+    <div class="dress-code-image" style="text-align:center;margin:1rem 0">
+      <img src="assets/c2d1bb77-e08f-4009-86e2-de159f0e340c.png"
+           alt="Киім стилінің үлгісі"
+           loading="lazy"
+           style="max-width:100%;height:auto">
+    </div>
+
+    <p class="dress-thanks">Күніміздi одан сәулелі ете түскеніңіз үшін рақмет!</p>
+  </div>
+  </div>
+</section>
+
+<div class="orn-divider" aria-hidden="true" style="opacity:.28;background:var(--bg)">
+  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <path d="M0 20 L520 20" stroke="currentColor" stroke-width=".5" opacity=".3"/>
+    <rect x="256" y="16" width="8" height="8" transform="rotate(45 260 20)" fill="currentColor" opacity=".55"/>
+  </svg>
+</div>
+
+<!-- RSVP → Google Sheets (Apps Script Web App URL қойыңыз, js/main.js) -->
+<section class="sec alt" data-r id="rsvp">
+  <div class="content-card">
+    <p class="slabel">Жауап беру</p>
+    <div class="divl divl--tight"><div class="diam"></div></div>
+
+    <form id="rsvpForm" class="rsvp-form" novalidate>
+      <p class="rsvp-form__title">Тойға қатысуыңызды растауыңызды сұраймыз!</p>
+
+      <div class="rsvp-field">
+        <label class="rsvp-label" for="rsvpName">
+          Аты-жөніңіз <span class="rsvp-label__hint">(жұбыңызбен келетін болсаңыз, есімдеріңізді бірге жазуыңызды өтінеміз)</span>
+        </label>
+        <input type="text" id="rsvpName" name="name" class="rsvp-input" autocomplete="name" maxlength="200" required placeholder="Мысалы: Әбдірахым Әділханұлы">
+      </div>
+
+      <fieldset class="rsvp-field rsvp-field--radios">
+        <legend class="rsvp-legend">Қатысу</legend>
+        <label class="rsvp-radio">
+          <input type="radio" name="attendance" value="Келемін" required>
+          <span>Келемін</span>
+        </label>
+        <label class="rsvp-radio">
+          <input type="radio" name="attendance" value="Жұбыммен келемін">
+          <span>Жұбыммен келемін</span>
+        </label>
+        <label class="rsvp-radio">
+          <input type="radio" name="attendance" value="Өкінішке орай, қатыса алмаймын">
+          <span>Өкінішке орай, қатыса алмаймын</span>
+        </label>
+      </fieldset>
+
+      <div class="rsvp-field">
+        <p class="rsvp-legend">Тойға неше адам келесіздер</p>
+        <div class="rsvp-counter" role="group" aria-labelledby="rsvp-guest-label">
+          <span id="rsvp-guest-label" class="visually-hidden">Қонақ саны</span>
+          <button type="button" class="rsvp-counter__btn" id="rsvpMinus" aria-label="Азайту">—</button>
+          <span class="rsvp-counter__val" id="rsvpGuestDisplay" aria-live="polite">1</span>
+          <button type="button" class="rsvp-counter__btn" id="rsvpPlus" aria-label="Көбейту">+</button>
+        </div>
+        <input type="hidden" name="guestCount" id="rsvpGuestInput" value="1">
+      </div>
+
+      <p class="rsvp-form__bot" aria-hidden="true">
+        <label>Сайт <input type="text" name="website" id="rsvpWebsite" tabindex="-1" autocomplete="off"></label>
+      </p>
+
+      <p id="rsvpFormStatus" class="rsvp-form__status" role="status"></p>
+
+      <button type="submit" class="rsvp-submit" id="rsvpSubmit">
+        <span id="rsvpSubmitText">Жіберу</span>
+        <span id="rsvpSubmitSpinner" class="rsvp-submit__spinner" hidden aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<div class="orn-divider" aria-hidden="true" style="opacity:.25;background:var(--bg2)">
+  <svg width="100%" height="40" viewBox="0 0 520 40" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+    <path d="M0 20 Q13 6 26 20 Q39 34 52 20 Q65 6 78 20 Q91 34 104 20 Q117 6 130 20 Q143 34 156 20 Q169 6 182 20 Q195 34 208 20 Q221 6 234 20 Q247 34 260 20 Q273 6 286 20 Q299 34 312 20 Q325 6 338 20 Q351 34 364 20 Q377 6 390 20 Q403 34 416 20 Q429 6 442 20 Q455 34 468 20 Q481 6 494 20 Q507 34 520 20" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <rect x="257" y="16" width="8" height="8" transform="rotate(45 261 20)" fill="currentColor" opacity=".65"/>
+  </svg>
+</div>
+
+<section class="sec sec--thanks" data-r id="thanks">
+  <div class="content-card">
+    <div class="divl divl--tight"><div class="diam"></div></div>
+    <div class="thanks-big">Рахмет!</div>
+    <p class="thanks-sub">
+      Сіздерді күтеміз · 21 тамыз 2026<br>
+      сағат 19:00 · Шымкент<br>
+      проспект Байдібек би
+    </p>
+    <div class="divl divl--tight divl--spaced-top"><div class="diam"></div></div>
+    <div class="thanks-orn" aria-hidden="true">
+    <svg width="100%" height="24" viewBox="0 0 520 28" preserveAspectRatio="none" fill="none" style="color:var(--gold2)">
+      <path d="M0 14 Q13 4 26 14 Q39 24 52 14 Q65 4 78 14 Q91 24 104 14 Q117 4 130 14 Q143 24 156 14 Q169 4 182 14 Q195 24 208 14 Q221 4 234 14 Q247 24 260 14 Q273 4 286 14 Q299 24 312 14 Q325 4 338 14 Q351 24 364 14 Q377 4 390 14 Q403 24 416 14 Q429 4 442 14 Q455 24 468 14 Q481 4 494 14 Q507 24 520 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="260" cy="14" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
+      <rect x="256.5" y="10.5" width="7" height="7" transform="rotate(45 260 14)" stroke="currentColor" stroke-width="1" fill="none"/>
+      <circle cx="260" cy="14" r="2" fill="currentColor"/>
+    </svg>
+    </div>
+  </div>
+</section>
+
+</div><!-- .page -->
+
+<script src="js/main.js"></script>
+</body>
+</html>

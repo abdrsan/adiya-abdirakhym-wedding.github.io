@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      width: 220px;
+      margin: 0;
+      padding: 12px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      background: #fdf8f0;
+      color: #1e1508;
+    }
+    p { margin: 0 0 10px; line-height: 1.4; }
+    button {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #b8902a;
+      border-radius: 6px;
+      background: #b8902a;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(1.05); }
+    a {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      color: #8b3a2a;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <p>Жергілікті сервер жұмыс істеп тұрғанда басыңыз (әдетте порт <strong>8000</strong>).</p>
+  <button type="button" id="open">Сайтты ашу</button>
+  <a id="prod" href="#" target="_blank" rel="noopener">GitHub Pages</a>
+  <script src="popup.js"></script>
+</body>
+</html>
