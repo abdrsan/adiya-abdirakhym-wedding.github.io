@@ -3,7 +3,7 @@
    * Google Apps Script Web App URL (Deploy → Web app → Anyone).
    * Қойылмағанда форма жіберілмейді. Нұсқа: scripts/google-apps-script-rsvp-webapp.gs
    */
-  const RSVP_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxpVoTe8kVghr_wnRI1_8o3Q0ukI4OaXXCg2xzpC-jnEO0bS40NA6Kl10xnjc0bRddL/exec";
+  const RSVP_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzKab9HmphimxrLiICPwF62tZQrLbMe_L4K1FLnUYHZE8QtfzRQgUvhXSAv31QVos1L/exec";
 
   const ob = new IntersectionObserver(
     (entries) => {
@@ -370,7 +370,7 @@
       e.preventDefault();
       showStatus("", null);
 
-      if (!RSVP_WEBAPP_URL || !RSVP_WEBAPP_URL.startsWith("https://script.google.com/")) {
+      if (!RSVP_WEBAPP_URL || !RSVP_WEBAPP_URL.startsWith("https://script.google.com/macros/s/AKfycbzKab9HmphimxrLiICPwF62tZQrLbMe_L4K1FLnUYHZE8QtfzRQgUvhXSAv31QVos1L/exec")) {
         showStatus(
           "Алдымен js/main.js ішінде RSVP_WEBAPP_URL-ға Google Apps Script Web App сілтемесін қойыңыз (нұсқау: scripts/google-apps-script-rsvp-webapp.gs).",
           "err"
