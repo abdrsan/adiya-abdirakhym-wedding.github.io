@@ -1211,10 +1211,10 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
   cursor: pointer;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2.75vw, 1.1rem);
+  font-size: clamp(1.15rem, 3.2vw, 1.3rem);
   color: var(--body-read);
   line-height: 1.45;
 }
@@ -1225,23 +1225,10 @@ body {
   accent-color: var(--gold-dark);
 }
 
+/* Radio buttons всегда вертикально — сверху вниз */
 @media (min-width: 720px) {
-  .rsvp-field--radios {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 0.5rem 1.2rem;
-  }
   .rsvp-field--radios .rsvp-legend {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-  .rsvp-radio {
-    margin-bottom: 0;
-    white-space: nowrap;
-  }
-  .rsvp-radio span {
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    margin-bottom: 0.65rem;
   }
 }
 
@@ -1349,6 +1336,16 @@ body {
 .rsvp-submit:disabled {
   opacity: 0.65;
   cursor: wait;
+}
+
+.rsvp-submit--success {
+  background: #1f6b3a !important;
+  border-color: #145026 !important;
+  color: #ffffff !important;
+}
+
+.rsvp-submit--success:hover {
+  background: #17522d !important;
 }
 
 .rsvp-submit__spinner {

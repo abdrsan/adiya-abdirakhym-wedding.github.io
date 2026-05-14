@@ -243,7 +243,7 @@
         },
         () => {}
       );
-    }, 1000);
+    }, 3000);
 
     musicBtn.addEventListener("click", () => {
       if (isPlaying) {
@@ -411,14 +411,19 @@
 
         if (data && data.ok) {
           showStatus("Рақмет! Жауабыңыз жазылды.", "ok");
+          submitBtn.classList.add("rsvp-submit--success");
+          submitText.textContent = "Жіберілді ✓";
           if (typeof window.__weddingDisableMusicAutoScroll === "function") {
             window.__weddingDisableMusicAutoScroll();
           }
           form.reset();
           guestCount = 1;
           renderGuests();
-          submitText.textContent = "Жіберу";
           setLoading(false);
+          setTimeout(() => {
+            submitBtn.classList.remove("rsvp-submit--success");
+            submitText.textContent = "Жіберу";
+          }, 5000);
           return;
         }
 
