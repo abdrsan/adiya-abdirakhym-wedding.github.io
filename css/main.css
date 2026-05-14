@@ -1228,9 +1228,9 @@ body {
 @media (min-width: 720px) {
   .rsvp-field--radios {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    gap: 0.5rem 1.5rem;
+    gap: 0.5rem 1.2rem;
   }
   .rsvp-field--radios .rsvp-legend {
     width: 100%;
@@ -1239,6 +1239,9 @@ body {
   .rsvp-radio {
     margin-bottom: 0;
     white-space: nowrap;
+  }
+  .rsvp-radio span {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
   }
 }
 
