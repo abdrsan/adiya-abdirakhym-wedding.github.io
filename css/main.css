@@ -1225,6 +1225,23 @@ body {
   accent-color: var(--gold-dark);
 }
 
+@media (min-width: 720px) {
+  .rsvp-field--radios {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+  }
+  .rsvp-field--radios .rsvp-legend {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .rsvp-radio {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+}
+
 .rsvp-counter {
   display: flex;
   align-items: center;

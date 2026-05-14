@@ -15,10 +15,40 @@
 var RSVP_SPREADSHEET_ID = '1g6DMfHaPhjkHdKIRqsCaVcUgLgJrRgeDY9yN5j7UZJE';
 var RSVP_SHEET_NAME = 'Sheet1';
 
-function doGet() {
-  return ContentService
-    .createTextOutput(JSON.stringify({ ok: true, message: 'RSVP endpoint' }))
-    .setMimeType(ContentService.MimeType.JSON);
+function doGet(e) {
+  try {
+    var data = e.parameter || {};
+    var name = (data.name || '').toString().trim();
+    var attendance = (data.attendance || '').toString().trim();
+    var guests = parseInt(data.guestCount, 10);
+    if (isNaN(guests) || guests < 0) guests = 0;
+    if (guests > 99) guests = 99;
+    var hp = (data.website || '').toString().trim();
+
+    if (hp) {
+      return jsonpOut({ ok: false, error: 'spam' }, data.callback);
+    }
+    if (!name) {
+      return jsonpOut({ ok: false, error: 'name_required' }, data.callback);
+    }
+    if (!attendance) {
+      return jsonpOut({ ok: false, error: 'attendance_required' }, data.callback);
+    }
+
+    var ss = SpreadsheetApp.openById(RSVP_SPREADSHEET_ID);
+    var sh = ss.getSheetByName(RSVP_SHEET_NAME);
+    if (!sh) {
+      sh = ss.getSheets()[0];
+    }
+
+    ensureHeaderRow_(sh);
+
+    sh.appendRow([new Date(), name, attendance, guests]);
+
+    return jsonpOut({ ok: true, message: 'OK' }, data.callback);
+  } catch (err) {
+    return jsonpOut({ ok: false, error: String(err.message || err) }, e.parameter && e.parameter.callback);
+  }
 }
 
 function doPost(e) {
@@ -77,5 +107,17 @@ function ensureHeaderRow_(sh) {
 function jsonOut(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function jsonpOut(obj, callback) {
+  var json = JSON.stringify(obj);
+  if (callback) {
+    return ContentService
+      .createTextOutput(callback + '(' + json + ')')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService
+    .createTextOutput(json)
     .setMimeType(ContentService.MimeType.JSON);
 }

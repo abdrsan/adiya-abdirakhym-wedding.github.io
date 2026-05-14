@@ -407,20 +407,7 @@
       };
 
       try {
-        const res = await fetch(RSVP_WEBAPP_URL, {
-          method: "POST",
-          mode: "cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload),
-        });
-
-        const text = await res.text();
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch {
-          throw new Error("parse");
-        }
+        const data = await sendJsonp(RSVP_WEBAPP_URL, payload);
 
         if (data && data.ok) {
           showStatus("Рақмет! Жауабыңыз жазылды.", "ok");
@@ -447,6 +434,41 @@
 
       submitText.textContent = "Жіберу";
       setLoading(false);
+    });
+  }
+
+  function sendJsonp(url, payload) {
+    return new Promise((resolve, reject) => {
+      const callbackName = "rsvpCb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const script = document.createElement("script");
+      const timeout = setTimeout(() => {
+        cleanup();
+        reject(new Error("timeout"));
+      }, 15000);
+
+      function cleanup() {
+        clearTimeout(timeout);
+        if (script.parentNode) script.parentNode.removeChild(script);
+        delete window[callbackName];
+      }
+
+      window[callbackName] = function(data) {
+        cleanup();
+        resolve(data);
+      };
+
+      const params = new URLSearchParams();
+      for (const [k, v] of Object.entries(payload)) {
+        params.set(k, String(v));
+      }
+      params.set("callback", callbackName);
+
+      script.src = url + "?" + params.toString();
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("script error"));
+      };
+      document.head.appendChild(script);
     });
   }
 
