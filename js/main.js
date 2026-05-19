@@ -110,10 +110,6 @@
         scrollRaf = null;
         return;
       }
-      if (!isPlaying || backgroundMusic.paused) {
-        scrollRaf = null;
-        return;
-      }
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         scrollRaf = null;
         return;
@@ -147,7 +143,6 @@
     }
 
     function onWheelUserIntent(e) {
-      if (!isPlaying || backgroundMusic.paused) return;
       if (e.deltaY < -2) {
         autoScrollPausedUntil = performance.now() + USER_SCROLL_PAUSE_MS;
       }
@@ -156,7 +151,7 @@
     /** Если доскроллили до низа и остановились — при ручном скролле вверх снова включить авто */
     function onScrollMaybeResumeAuto() {
       if (autoScrollPermanentlyDisabled) return;
-      if (!isPlaying || backgroundMusic.paused || scrollRaf != null) return;
+      if (scrollRaf != null) return;
       if (maxScrollY() - window.scrollY > 48) {
         scrollLastTs = 0;
         lastScrollY = window.scrollY;
@@ -190,11 +185,8 @@
     };
 
     const setPausedUI = () => {
-      detachAutoScrollListeners();
-      stopSlowScroll();
       iconOff.style.display = "";
       iconOn.style.display = "none";
-      label.textContent = "Әуенді қосу";
       musicBtn.classList.remove("music-hero-btn--playing");
       musicBtn.setAttribute("aria-pressed", "false");
     };
@@ -202,10 +194,8 @@
     const setPlayingUI = () => {
       iconOff.style.display = "none";
       iconOn.style.display = "";
-      label.textContent = "Әуенді өшіру";
       musicBtn.classList.add("music-hero-btn--playing");
       musicBtn.setAttribute("aria-pressed", "true");
-      startSlowScroll();
     };
 
     const playMusic = () => {
@@ -215,7 +205,6 @@
           setPlayingUI();
         },
         () => {
-          label.textContent = "Музыка қосылмады";
           setPausedUI();
           isPlaying = false;
         }
@@ -258,11 +247,12 @@
           setPlayingUI();
         },
         () => {
-          label.textContent = "Музыка қосылмады";
           isPlaying = false;
         }
       );
     });
+
+    startSlowScroll();
 
     window.__weddingDisableMusicAutoScroll = function () {
       autoScrollPermanentlyDisabled = true;
