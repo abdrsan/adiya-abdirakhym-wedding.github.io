@@ -121,62 +121,26 @@ body {
   --spin-blur: 0.4px;
 }
 
-.bg-spin--2 {
-  top: 36%;
-  right: max(-4.5rem, -20vw);
-  width: min(17rem, 85vw);
-  height: min(17rem, 85vw);
+.bg-spin--3 {
+  top: 55%;
+  right: max(-4rem, -16vw);
+  width: min(16rem, 72vw);
+  height: min(16rem, 72vw);
   background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.32;
-  animation-duration: 165s;
+  opacity: 0.22;
+  animation-duration: 190s;
   animation-direction: reverse;
   --spin-blur: 0.8px;
 }
 
-.bg-spin--3 {
-  top: 62%;
-  left: max(-3rem, -14vw);
-  width: min(14rem, 72vw);
-  height: min(14rem, 72vw);
-  background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.28;
-  animation-duration: 190s;
-  --spin-blur: 0.3px;
-}
-
-.bg-spin--4 {
-  top: 88%;
-  right: -2rem;
-  width: min(12rem, 65vw);
-  height: min(12rem, 65vw);
-  background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.30;
-  animation-duration: 210s;
-  animation-direction: reverse;
-  --spin-blur: 1px;
-}
-
-/* Дополнительные орнаменты — больше разнообразия по странице */
 .bg-spin--5 {
-  top: 18%;
-  right: max(-6rem, -24vw);
-  width: min(15rem, 74vw);
-  height: min(15rem, 74vw);
-  background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.28;
-  animation-duration: 150s;
-  --spin-blur: 0.6px;
-}
-
-.bg-spin--6 {
-  top: 74%;
-  left: max(-7rem, -26vw);
-  width: min(18rem, 88vw);
-  height: min(18rem, 88vw);
+  top: 82%;
+  left: max(-5rem, -20vw);
+  width: min(14rem, 65vw);
+  height: min(14rem, 65vw);
   background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.25;
-  animation-duration: 240s;
-  animation-direction: reverse;
+  opacity: 0.18;
+  animation-duration: 210s;
   --spin-blur: 1.2px;
 }
 
@@ -197,8 +161,8 @@ body {
 }
 
 .page {
-  width: min(720px, 100%);
-  max-width: 720px;
+  width: min(860px, 100%);
+  max-width: 860px;
   /* Толықтай бір түсті — артқы фонмен шовсыз, «үш баған» эффектісі жоқ */
   background: var(--bg);
   position: relative;
@@ -226,7 +190,7 @@ body {
 /* Карточки секций — invitation-card / location-card стилінде */
 .content-card {
   width: 100%;
-  max-width: min(32rem, 100%);
+  max-width: min(38rem, 92%);
   margin-left: auto;
   margin-right: auto;
   background: var(--surface);
@@ -667,7 +631,7 @@ body {
 }
 
 .content-card--accent {
-  max-width: min(22.5rem, 100%);
+  max-width: min(28rem, 92%);
 }
 
 .content-card--accent .calendar-month-row {
@@ -1536,7 +1500,7 @@ code {
 
 /* ── Extra small: < 360px ── */
 @media (max-width: 360px) {
-  .page { 
+  .page {
     max-width: 100%;
     margin: 0 auto;
   }
@@ -1584,7 +1548,7 @@ code {
 
 /* ── Small mobile: 361–480px ── */
 @media (min-width: 361px) and (max-width: 480px) {
-  .page { 
+  .page {
     max-width: 100%;
     margin: 0 auto;
   }
@@ -1609,8 +1573,8 @@ code {
 
 /* ── Tablet: 481–719px (720+ — ноутбук блогы жоғарыда) ── */
 @media (min-width: 481px) and (max-width: 719px) {
-  .page { 
-    max-width: min(680px, calc(100vw - 16px));
+  .page {
+    max-width: min(780px, calc(100vw - 16px));
     margin: 0 auto;
   }
   .hero-photo {
@@ -1638,8 +1602,8 @@ code {
 
 /* ── Large tablet / small desktop: 769–1024px ── */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .page { 
-    max-width: min(92vw, 680px);
+  .page {
+    max-width: min(92vw, 820px);
     margin: 0 auto;
   }
   .hero-footer {
@@ -1656,8 +1620,8 @@ code {
 
 /* ── Desktop: > 1024px ── */
 @media (min-width: 1025px) {
-  .page { 
-    max-width: min(90vw, 720px);
+  .page {
+    max-width: min(90vw, 860px);
     margin: 0 auto;
   }
   .hero { min-height: auto; }
