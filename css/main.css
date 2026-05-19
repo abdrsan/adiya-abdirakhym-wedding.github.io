@@ -103,8 +103,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  filter: sepia(0.2) contrast(0.9) saturate(0.92) blur(var(--spin-blur, 0px));
-  opacity: 0.16;
+  filter: sepia(0.15) contrast(0.95) saturate(0.95) blur(var(--spin-blur, 0px));
+  opacity: 0.35;
   will-change: transform;
   animation: bgSpinRotate 130s linear infinite;
   -webkit-transform: translateZ(0);
@@ -112,12 +112,13 @@ body {
 }
 
 .bg-spin--1 {
-  top: 6%;
-  left: max(-5rem, -22vw);
-  width: min(20rem, 92vw);
-  height: min(20rem, 92vw);
-  background-image: url("../assets/background/oyu6.jpeg");
-  --spin-blur: 0.6px;
+  top: 4%;
+  left: max(-6rem, -24vw);
+  width: min(24rem, 100vw);
+  height: min(24rem, 100vw);
+  background-image: url("../assets/Beeldmerk+Brasserie+de+Jasmijn-1920w.png");
+  opacity: 0.45;
+  --spin-blur: 0.4px;
 }
 
 .bg-spin--2 {
@@ -126,10 +127,10 @@ body {
   width: min(17rem, 85vw);
   height: min(17rem, 85vw);
   background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.18;
+  opacity: 0.32;
   animation-duration: 165s;
   animation-direction: reverse;
-  --spin-blur: 1px;
+  --spin-blur: 0.8px;
 }
 
 .bg-spin--3 {
@@ -138,7 +139,7 @@ body {
   width: min(14rem, 72vw);
   height: min(14rem, 72vw);
   background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.14;
+  opacity: 0.28;
   animation-duration: 190s;
   --spin-blur: 0.3px;
 }
@@ -149,10 +150,10 @@ body {
   width: min(12rem, 65vw);
   height: min(12rem, 65vw);
   background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.13;
+  opacity: 0.30;
   animation-duration: 210s;
   animation-direction: reverse;
-  --spin-blur: 1.2px;
+  --spin-blur: 1px;
 }
 
 /* Дополнительные орнаменты — больше разнообразия по странице */
@@ -162,9 +163,9 @@ body {
   width: min(15rem, 74vw);
   height: min(15rem, 74vw);
   background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.12;
+  opacity: 0.28;
   animation-duration: 150s;
-  --spin-blur: 0.8px;
+  --spin-blur: 0.6px;
 }
 
 .bg-spin--6 {
@@ -173,10 +174,10 @@ body {
   width: min(18rem, 88vw);
   height: min(18rem, 88vw);
   background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.10;
+  opacity: 0.25;
   animation-duration: 240s;
   animation-direction: reverse;
-  --spin-blur: 1.6px;
+  --spin-blur: 1.2px;
 }
 
 @keyframes bgSpinRotate {
@@ -1070,8 +1071,8 @@ body {
 ═══════════════════════════════════════ */
 .sec {
   width: 100%;
-  padding-top: clamp(1rem, 2.8vw, 1.35rem);
-  padding-bottom: clamp(1rem, 2.8vw, 1.35rem);
+  padding-top: clamp(1.5rem, 4vw, 2.2rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.2rem);
   padding-left: max(env(safe-area-inset-left, 0px), clamp(12px, 4vw, 40px));
   padding-right: max(env(safe-area-inset-right, 0px), clamp(12px, 4vw, 40px));
   text-align: center;
