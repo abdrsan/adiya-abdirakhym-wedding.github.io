@@ -113,6 +113,73 @@ body {
   z-index: 1;
 }
 
+/* ═══════════════════════════════════════
+   ФОНОВЫЕ КРУТЯЩИЕСЯ ОЮ — элегантный стиль
+═══════════════════════════════════════ */
+.bg-spin-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.bg-spin {
+  position: absolute;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: sepia(0.25) contrast(0.85) saturate(0.88);
+  opacity: 0.10;
+  will-change: transform;
+  animation: bgSpinRotate 160s linear infinite;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.bg-spin--1 {
+  top: 2%;
+  left: max(-8rem, -30vw);
+  width: min(28rem, 110vw);
+  height: min(28rem, 110vw);
+  background-image: url("../assets/Beeldmerk+Brasserie+de+Jasmijn-1920w.png");
+  opacity: 0.14;
+  animation-duration: 140s;
+}
+
+.bg-spin--3 {
+  top: 45%;
+  right: max(-6rem, -22vw);
+  width: min(22rem, 90vw);
+  height: min(22rem, 90vw);
+  background-image: url("../assets/background/oyu5.jpeg");
+  opacity: 0.10;
+  animation-duration: 180s;
+  animation-direction: reverse;
+}
+
+.bg-spin--5 {
+  top: 78%;
+  left: max(-7rem, -26vw);
+  width: min(20rem, 85vw);
+  height: min(20rem, 85vw);
+  background-image: url("../assets/background/oyu6.jpeg");
+  opacity: 0.08;
+  animation-duration: 200s;
+}
+
+@keyframes bgSpinRotate {
+  from { transform: translateZ(0) rotate(0deg); }
+  to   { transform: translateZ(0) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-spin { animation: none; opacity: 0.06; }
+}
+
 /* Второе фото */
 .photo-sec {
   padding-top: 0;
@@ -138,7 +205,7 @@ body {
   background: transparent;
   border: 1px solid rgba(212, 180, 131, 0.18);
   border-radius: var(--radius);
-  padding: clamp(1.15rem, 3.8vw, 1.65rem) clamp(1rem, 3.5vw, 1.35rem);
+  padding: clamp(1.6rem, 5vw, 2.4rem) clamp(1.2rem, 4vw, 1.8rem);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -756,7 +823,7 @@ body {
   color: var(--body-read);
   font-style: normal;
   font-weight: 500;
-  margin: 0.65rem 0 0.85rem;
+  margin: 1rem 0 1.25rem;
 }
 
 .sbody {
@@ -786,7 +853,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: .7rem;
-  margin: .9rem auto;
+  margin: 1.25rem auto;
 }
 .divl::before, .divl::after {
   content: "";
@@ -913,12 +980,14 @@ body {
   font-size: clamp(1.02rem, 2.8vw, 1.12rem);
   color: var(--text-mid);
   font-style: normal;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
 }
 .hosts-n {
   font-family: var(--font-names);
   font-weight: 600;
   font-style: italic;
+  margin-bottom: 0.25rem;
   font-size: clamp(1.65rem, 5.8vw, 2.35rem);
   letter-spacing: .06em;
   color: var(--gold);
@@ -971,8 +1040,8 @@ body {
 ═══════════════════════════════════════ */
 .sec {
   width: 100%;
-  padding-top: clamp(1.5rem, 4vw, 2.2rem);
-  padding-bottom: clamp(1.5rem, 4vw, 2.2rem);
+  padding-top: clamp(2.2rem, 6vw, 3.5rem);
+  padding-bottom: clamp(2.2rem, 6vw, 3.5rem);
   padding-left: max(env(safe-area-inset-left, 0px), clamp(12px, 4vw, 40px));
   padding-right: max(env(safe-area-inset-right, 0px), clamp(12px, 4vw, 40px));
   text-align: center;
@@ -987,11 +1056,11 @@ body {
 }
 
 .content-card .stitle {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .content-card .slabel {
-  margin-bottom: 0.28rem;
+  margin-bottom: 0.45rem;
 }
 
 .slabel {
