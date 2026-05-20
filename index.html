@@ -12,11 +12,6 @@
 </head>
 <body>
 <div class="page">
-<div class="bg-spin-layer" aria-hidden="true">
-  <div class="bg-spin bg-spin--1"></div>
-  <div class="bg-spin bg-spin--3"></div>
-  <div class="bg-spin bg-spin--5"></div>
-</div>
 <audio id="backgroundMusic" loop playsinline preload="metadata" hidden>
   <source src="assets/music/songjar.mp3" type="audio/mpeg">
 </audio>
@@ -34,31 +29,6 @@
          onerror="this.closest('.hero-photo').classList.add('hero-photo--fallback')">
     <div class="hero-photo__scrim" aria-hidden="true"></div>
 
-    <button type="button" class="music-hero-btn" id="musicToggle" aria-pressed="false" aria-label="Фондық әуен">
-      <svg class="music-hero-btn__circle" viewBox="0 0 120 120" aria-hidden="true">
-        <defs>
-          <path id="circlePath" d="M60,60 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
-        </defs>
-        <text fill="currentColor" font-size="12" font-family="var(--font-body)" letter-spacing="2">
-          <textPath href="#circlePath">ӘУЕНДІ ҚОСУ | ӘУЕНДІ ҚОСУ | ӘУЕНДІ ҚОСУ | </textPath>
-        </text>
-      </svg>
-      <span class="music-hero-btn__center">
-        <span id="musicIconOff" class="music-hero-btn__glyph" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 18V6l12 6-12 6z"/>
-            <line x1="3" y1="3" x2="21" y2="21"/>
-          </svg>
-        </span>
-        <span id="musicIconOn" class="music-hero-btn__glyph music-hero-btn__glyph--on" style="display:none" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="6" y="4" width="4" height="16" rx="1"/>
-            <rect x="14" y="4" width="4" height="16" rx="1"/>
-          </svg>
-        </span>
-      </span>
-    </button>
-
     <div class="hero-photo__content" data-r>
       <p class="hero-photo__kicker">Үйлену тойына шақыру</p>
       <div class="divl divl--on-photo"><div class="diam diam--on-photo"></div></div>
@@ -69,6 +39,42 @@
       </div>
     </div>
   </div>
+
+  <button type="button" class="music-hero-btn" id="musicToggle" aria-pressed="false" aria-label="Фондық әуен">
+    <svg class="music-hero-btn__circle" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <path id="circlePath" d="M60,60 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
+      </defs>
+      <text fill="currentColor" font-size="12" font-family="var(--font-body)" letter-spacing="2">
+        <textPath href="#circlePath">ӘУЕНДІ ҚОСУ | ӘУЕНДІ ҚОСУ | ӘУЕНДІ ҚОСУ | </textPath>
+      </text>
+    </svg>
+    <span class="music-hero-btn__center">
+      <span id="musicIconOff" class="music-hero-btn__glyph" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V6l12 6-12 6z"/>
+          <line x1="3" y1="3" x2="21" y2="21"/>
+        </svg>
+      </span>
+      <span id="musicIconOn" class="music-hero-btn__glyph music-hero-btn__glyph--on" style="display:none" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+      </span>
+    </span>
+  </button>
+</section>
+
+<!-- Второе фото -->
+<section class="sec photo-sec" data-r>
+  <img class="photo-sec__img"
+       src="assets/photo2.jpg"
+       alt="Әбдірахым мен Әдия"
+       width="1200"
+       height="800"
+       onerror="this.style.display='none'">
+</section>
 
 <!-- Приглашение от родителей -->
 <section class="sec alt" data-r id="parents">

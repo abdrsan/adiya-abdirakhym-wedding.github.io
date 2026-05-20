@@ -86,80 +86,6 @@ body {
   }
 }
 
-/* Қолданбалы оюлар — .page ішінде (мобильде fixed артында жоғалмау үшін) */
-.bg-spin-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.bg-spin {
-  position: absolute;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  filter: sepia(0.15) contrast(0.95) saturate(0.95) blur(var(--spin-blur, 0px));
-  opacity: 0.35;
-  will-change: transform;
-  animation: bgSpinRotate 130s linear infinite;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-.bg-spin--1 {
-  top: 4%;
-  left: max(-6rem, -24vw);
-  width: min(24rem, 100vw);
-  height: min(24rem, 100vw);
-  background-image: url("../assets/Beeldmerk+Brasserie+de+Jasmijn-1920w.png");
-  opacity: 0.45;
-  --spin-blur: 0.4px;
-}
-
-.bg-spin--3 {
-  top: 55%;
-  right: max(-4rem, -16vw);
-  width: min(16rem, 72vw);
-  height: min(16rem, 72vw);
-  background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.22;
-  animation-duration: 190s;
-  animation-direction: reverse;
-  --spin-blur: 0.8px;
-}
-
-.bg-spin--5 {
-  top: 82%;
-  left: max(-5rem, -20vw);
-  width: min(14rem, 65vw);
-  height: min(14rem, 65vw);
-  background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.18;
-  animation-duration: 210s;
-  --spin-blur: 1.2px;
-}
-
-@keyframes bgSpinRotate {
-  from {
-    transform: translateZ(0) rotate(0deg);
-  }
-  to {
-    transform: translateZ(0) rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bg-spin {
-    animation: none;
-    opacity: 0.12;
-  }
-}
-
 .page {
   width: min(860px, 100%);
   max-width: 860px;
@@ -182,9 +108,25 @@ body {
   }
 }
 
-.page > *:not(.bg-spin-layer) {
+.page > * {
   position: relative;
   z-index: 1;
+}
+
+/* Второе фото */
+.photo-sec {
+  padding-top: 0;
+  padding-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+.photo-sec__img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
 }
 
 /* Карточки секций — invitation-card / location-card стилінде */
@@ -266,14 +208,10 @@ body {
   line-height: 1.75;
 }
 
-/* Әуен — hero үстінде ортасында */
+/* Әуен — hero астында, ортасында */
 .music-hero-btn {
-  position: absolute;
+  position: relative;
   z-index: 8;
-  top: max(12px, env(safe-area-inset-top, 0px));
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,23 +226,23 @@ body {
   cursor: pointer;
   box-shadow: 0 0 20px rgba(212, 180, 131, 0.12);
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  margin: 1.25rem auto 0.5rem;
 }
 
 .music-hero-btn:hover {
   background: rgba(26, 15, 6, 0.78);
   border-color: var(--gold);
   box-shadow: 0 0 20px rgba(212, 180, 131, 0.25);
-  transform: translateX(-50%);
+  transform: scale(1.05);
 }
 
 .music-hero-btn:active {
-  transform: translateX(-50%) scale(0.95);
+  transform: scale(0.95);
 }
 
 .music-hero-btn--playing {
   border-color: rgba(212, 180, 131, 0.55);
   background: rgba(26, 15, 6, 0.82);
-  transform: translateX(-50%);
 }
 
 .music-hero-btn__circle {
