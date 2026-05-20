@@ -78,7 +78,7 @@
     const backgroundMusic = document.getElementById("backgroundMusic");
     const label = musicBtn && musicBtn.querySelector(".music-hero-btn__text");
 
-    if (!musicBtn || !backgroundMusic || !iconOff || !iconOn || !label) return;
+    if (!musicBtn || !backgroundMusic || !iconOff || !iconOn) return;
 
     backgroundMusic.volume = 0.3;
     let isPlaying = false;

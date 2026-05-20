@@ -135,10 +135,9 @@ body {
   max-width: min(38rem, 92%);
   margin-left: auto;
   margin-right: auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: 1px solid rgba(212, 180, 131, 0.18);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
   padding: clamp(1.15rem, 3.8vw, 1.65rem) clamp(1rem, 3.5vw, 1.35rem);
   text-align: center;
   position: relative;
@@ -481,10 +480,9 @@ body {
   max-width: 22rem;
   margin: 0 auto 0.35rem;
   padding: 0.75rem 0.6rem 0.9rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(212, 180, 131, 0.18);
   border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow-md), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  background: transparent;
 }
 .countdown__label {
   font-family: var(--font-display);
@@ -508,7 +506,7 @@ body {
   gap: 0.2rem;
   padding: 0.45rem 0.15rem;
   border-radius: var(--radius-sm);
-  background: var(--bg-alt);
+  background: rgba(212, 180, 131, 0.06);
 }
 .countdown__num {
   font-family: var(--font-names);
@@ -982,7 +980,7 @@ body {
   max-width: 100%;
   overflow-wrap: anywhere;
 }
-.sec.alt { background: var(--bg2); }
+.sec.alt { background: transparent; }
 
 .sec--thanks {
   padding-bottom: clamp(1rem, 3vw, 1.75rem);
@@ -1090,13 +1088,13 @@ body {
 
 .rsvp-input {
   width: 100%;
-  padding: 0.75rem 0.95rem;
-  font-family: var(--font-body);
-  font-size: clamp(1.15rem, 3.2vw, 1.3rem);
-  color: var(--text);
+  padding: 0.65rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: var(--bg-alt);
+  font-family: var(--font-body);
+  font-size: clamp(1.06rem, 2.8vw, 1.22rem);
+  color: var(--text);
+  background: var(--bg);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1154,20 +1152,20 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: var(--surface);
+  background: var(--bg);
 }
 
 .rsvp-counter__btn {
   flex: 0 0 3rem;
   height: 2.75rem;
   border: 0;
-  background: var(--bg-alt);
+  background: rgba(212, 180, 131, 0.10);
   color: var(--text);
   font-family: var(--font-names);
   font-size: 1.35rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
 
 .rsvp-counter__btn:hover:not(:disabled) {
