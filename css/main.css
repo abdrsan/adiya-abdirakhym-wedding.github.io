@@ -2,6 +2,9 @@
    ТОЙ ШАҚЫРУ — REDESIGNED STYLES
    ══════════════════════════════════════════ */
 
+/* Cormorant Garamond — elegant unified serif */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
 :root {
   /* Токены как у adiya-kyz-uzatu (ethno-gold luxury) */
   --bg:          #f8f5f0;
@@ -26,7 +29,7 @@
   --muted2:      var(--text-soft);
   --border:      rgba(212, 180, 131, 0.25);
 
-  --font-names:    "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  --font-names:    "Cormorant Garamond", Georgia, serif;
   --font-body:     "Cormorant Garamond", Georgia, serif;
   --font-display:  "Cormorant Garamond", Georgia, serif;
   --font-family:   var(--font-body);
@@ -44,10 +47,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  scroll-behavior: smooth;
+}
+
+html {
   width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 17.5px;
   font-family: var(--font-body);
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1, "liga" 1;
@@ -60,11 +67,13 @@ body {
   font-size: clamp(1.06rem, 2.7vw, 1.22rem);
   line-height: 1.72;
   color: var(--text);
-  /* Бір қабатты, тегіс повтор — екі әртүрлі tile өлшемі шеттерде «мозаика» жасамайды */
-  background-color: var(--bg);
-  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 6 L26.5 14 L35 14 L28 19 L30.5 27 L24 22 L17.5 27 L20 19 L13 14 L21.5 14 Z' fill='%23d4b483' fill-opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 48px 48px;
-  background-repeat: repeat;
+  background-color: #f0e8dc;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(212, 171, 100, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(180, 130, 80, 0.14) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 6 L26.5 14 L35 14 L28 19 L30.5 27 L24 22 L17.5 27 L20 19 L13 14 L21.5 14 Z' fill='%23d4b483' fill-opacity='0.055'/%3E%3C/svg%3E");
+  background-size: auto, auto, 48px 48px;
+  background-repeat: no-repeat, no-repeat, repeat;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -72,8 +81,8 @@ body {
   justify-content: center;
   min-height: 100svh;
   min-height: 100dvh;
-  padding-left: max(env(safe-area-inset-left, 0px), clamp(0px, 1.5vw, 10px));
-  padding-right: max(env(safe-area-inset-right, 0px), clamp(0px, 1.5vw, 10px));
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   position: relative;
   overflow-x: hidden;
@@ -87,10 +96,9 @@ body {
 }
 
 .page {
-  width: min(860px, 100%);
-  max-width: 860px;
-  /* Толықтай бір түсті — артқы фонмен шовсыз, «үш баған» эффектісі жоқ */
-  background: var(--bg);
+  width: 100%;
+  max-width: 100%;
+  background: linear-gradient(180deg, #f5efe6 0%, #f0e8dc 40%, #f5efe6 100%);
   position: relative;
   z-index: 1;
   isolation: isolate;
@@ -98,13 +106,15 @@ body {
   overflow-y: visible;
   margin: 0 auto;
   min-width: 0;
-  padding: 0 clamp(10px, 3vw, 16px);
-  box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.1), 0 8px 40px rgba(43, 29, 14, 0.05);
+  padding: 0;
+  box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.15), 0 8px 60px rgba(43, 29, 14, 0.1);
 }
 
-@media (max-width: 719px) {
+@media (min-width: 720px) {
   .page {
-    box-shadow: 0 0 0 1px rgba(212, 180, 131, 0.08), 0 6px 28px rgba(43, 29, 14, 0.04);
+    width: min(860px, 100%);
+    max-width: 860px;
+    padding: 0 clamp(10px, 3vw, 16px);
   }
 }
 
@@ -132,8 +142,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  filter: sepia(0.25) contrast(0.85) saturate(0.88);
-  opacity: 0.10;
+  filter: sepia(0.15) contrast(0.92) saturate(0.95);
+  opacity: 0.18;
   will-change: transform;
   animation: bgSpinRotate 160s linear infinite;
   -webkit-transform: translateZ(0);
@@ -141,34 +151,66 @@ body {
 }
 
 .bg-spin--1 {
-  top: 2%;
-  left: max(-8rem, -30vw);
-  width: min(28rem, 110vw);
-  height: min(28rem, 110vw);
-  background-image: url("../assets/Beeldmerk+Brasserie+de+Jasmijn-1920w.png");
-  opacity: 0.14;
+  top: 8%;
+  left: max(-4rem, -12vw);
+  width: min(18rem, 55vw);
+  height: min(18rem, 55vw);
+  background-image: url("../assets/background/oyu7.jpeg");
+  opacity: 0.18;
   animation-duration: 140s;
 }
 
-.bg-spin--3 {
-  top: 45%;
-  right: max(-6rem, -22vw);
-  width: min(22rem, 90vw);
-  height: min(22rem, 90vw);
-  background-image: url("../assets/background/oyu5.jpeg");
-  opacity: 0.10;
+.bg-spin--2 {
+  top: 22%;
+  right: max(-3rem, -10vw);
+  width: min(14rem, 42vw);
+  height: min(14rem, 42vw);
+  background-image: url("../assets/background/oyu8.jpeg");
+  opacity: 0.16;
   animation-duration: 180s;
+  animation-direction: reverse;
+}
+
+.bg-spin--3 {
+  top: 42%;
+  left: max(-3rem, -10vw);
+  width: min(16rem, 48vw);
+  height: min(16rem, 48vw);
+  background-image: url("../assets/background/oyu5.jpeg");
+  opacity: 0.15;
+  animation-duration: 160s;
+}
+
+.bg-spin--4 {
+  top: 58%;
+  right: max(-4rem, -12vw);
+  width: min(15rem, 45vw);
+  height: min(15rem, 45vw);
+  background-image: url("../assets/background/oyu9.jpeg");
+  opacity: 0.16;
+  animation-duration: 200s;
   animation-direction: reverse;
 }
 
 .bg-spin--5 {
   top: 78%;
-  left: max(-7rem, -26vw);
-  width: min(20rem, 85vw);
-  height: min(20rem, 85vw);
+  left: max(-3rem, -10vw);
+  width: min(13rem, 38vw);
+  height: min(13rem, 38vw);
   background-image: url("../assets/background/oyu6.jpeg");
-  opacity: 0.08;
-  animation-duration: 200s;
+  opacity: 0.14;
+  animation-duration: 220s;
+}
+
+.bg-spin--6 {
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  width: min(12rem, 35vw);
+  height: min(12rem, 35vw);
+  background-image: url("../assets/background/oyu8.jpeg");
+  opacity: 0.12;
+  animation-duration: 170s;
 }
 
 @keyframes bgSpinRotate {
@@ -202,13 +244,14 @@ body {
   max-width: min(38rem, 92%);
   margin-left: auto;
   margin-right: auto;
-  background: transparent;
-  border: 1px solid rgba(212, 180, 131, 0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(248,245,240,0.7) 100%);
+  border: 1px solid rgba(212, 180, 131, 0.35);
   border-radius: var(--radius);
   padding: clamp(1.6rem, 5vw, 2.4rem) clamp(1.2rem, 4vw, 1.8rem);
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(43, 29, 14, 0.08), 0 2px 12px rgba(43, 29, 14, 0.04);
 }
 
 .content-card--accent::before {
@@ -274,32 +317,43 @@ body {
   line-height: 1.75;
 }
 
-/* Әуен — hero астында, ортасында */
+/* Музыка секциясы — hero мен контенттің ортасында */
+.music-sec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Әуен — hero ішінде, суреттің үстінде */
 .music-hero-btn {
   position: relative;
   z-index: 8;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  border: 1px solid rgba(212, 180, 131, 0.45);
-  background: rgba(26, 15, 6, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 180, 131, 0.55);
+  background: rgba(18, 10, 4, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--gold);
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(212, 180, 131, 0.12);
+  box-shadow: 0 0 28px rgba(212, 180, 131, 0.18), 0 4px 20px rgba(0,0,0,0.35);
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
-  margin: 1.25rem auto 0.5rem;
+  margin: 0 auto;
 }
 
 .music-hero-btn:hover {
-  background: rgba(26, 15, 6, 0.78);
+  background: rgba(18, 10, 4, 0.82);
   border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(212, 180, 131, 0.25);
-  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(212, 180, 131, 0.3);
+  transform: scale(1.06);
 }
 
 .music-hero-btn:active {
@@ -307,8 +361,8 @@ body {
 }
 
 .music-hero-btn--playing {
-  border-color: rgba(212, 180, 131, 0.55);
-  background: rgba(26, 15, 6, 0.82);
+  border-color: rgba(212, 180, 131, 0.7);
+  background: rgba(18, 10, 4, 0.85);
 }
 
 .music-hero-btn__circle {
@@ -331,8 +385,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
 }
 
 .music-hero-btn__glyph {
@@ -353,7 +407,8 @@ body {
    HERO — фото + текст на фото + таймер
 ═══════════════════════════════════════ */
 .hero {
-  min-height: auto;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -364,34 +419,19 @@ body {
   isolation: isolate;
 }
 
-@media (max-width: 719px) {
-  .hero {
-    min-height: 100svh;
-    min-height: 100dvh;
-  }
-}
-
 .hero-photo {
   position: relative;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   width: 100%;
-  margin-inline: auto;
+  margin-inline: 0;
   overflow: hidden;
-  /* Телефон: биік портрет; ноутбук: кеңірек «кинолента» — media төменде */
-  aspect-ratio: 3 / 4;
-  min-height: 46svh;
-  max-height: 74svh;
+  min-height: 100svh;
+  min-height: 100dvh;
   background:
     linear-gradient(165deg, rgba(253, 248, 240, .15) 0%, transparent 45%),
     linear-gradient(145deg, #4a3c2e 0%, #2a2218 55%, #1a1510 100%);
 }
 
-@media (max-width: 719px) {
-  .hero-photo {
-    flex: 1 1 auto;
-    min-height: 0;
-  }
-}
 
 .hero-photo--fallback .hero-photo__img {
   display: none;
@@ -407,24 +447,23 @@ body {
   object-position: center 18%;
 }
 
-/* Телефон: портретті кадр; планшет: сәл кеңірек */
+/* Телефон: портрет — full aspect */
 @media (max-width: 479px) {
   .hero-photo {
-    aspect-ratio: 10 / 13;
-    min-height: 44svh;
-    max-height: 72svh;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
   .hero-photo__img {
     object-position: center 14%;
   }
 }
 
-/* Ноутбук және монитор: кең формат, биіктік шектелген, лицо и текст не обрезаются */
+/* Ноутбук: ограничен по высоте */
 @media (min-width: 720px) {
   .hero-photo {
     aspect-ratio: 16 / 9;
-    min-height: 320px;
-    max-height: min(60vh, 560px);
+    min-height: 100vh;
+    max-height: 100vh;
     flex: 0 0 auto;
   }
   .hero-photo__img {
@@ -434,9 +473,9 @@ body {
 
 @media (min-width: 1100px) {
   .hero-photo {
-    aspect-ratio: 2 / 1;
-    min-height: 340px;
-    max-height: min(60vh, 600px);
+    aspect-ratio: unset;
+    min-height: 100vh;
+    max-height: 100vh;
   }
   .hero-photo__img {
     object-position: center 30%;
@@ -449,10 +488,10 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(15, 8, 2, 0.08) 0%,
-    rgba(15, 8, 2, 0.02) 22%,
-    rgba(15, 8, 2, 0.42) 52%,
-    rgba(15, 8, 2, 0.88) 74%,
+    rgba(15, 8, 2, 0.05) 0%,
+    rgba(15, 8, 2, 0.01) 30%,
+    rgba(15, 8, 2, 0.45) 58%,
+    rgba(15, 8, 2, 0.88) 78%,
     rgba(15, 8, 2, 0.97) 100%
   );
   z-index: 1;
@@ -500,11 +539,18 @@ body {
 
 .names--on-photo {
   font-family: var(--font-names);
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 0.35rem;
-  margin-bottom: 0.15rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
   -webkit-font-smoothing: antialiased;
+  font-size: clamp(3.8rem, 17vw, 7rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.55),
+    0 6px 32px rgba(0,0,0,0.4);
 }
 
 /* Гарантированно белый текст имён на фото (поверх общих стилей .names) */
@@ -553,10 +599,10 @@ body {
 }
 .countdown__label {
   font-family: var(--font-display);
-  font-size: clamp(0.7rem, 1.8vw, 0.82rem);
-  letter-spacing: 0.22em;
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-dark);
   font-weight: 600;
   margin-bottom: 0.55rem;
 }
@@ -577,9 +623,9 @@ body {
 }
 .countdown__num {
   font-family: var(--font-names);
-  font-weight: 800;
-  font-style: italic;
-  font-size: clamp(1.35rem, 5vw, 1.85rem);
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   line-height: 1;
   color: var(--text);
 }
@@ -1065,23 +1111,23 @@ body {
 
 .slabel {
   font-family: var(--font-display);
-  font-size: clamp(0.68rem, 1.8vw, 0.78rem);
-  letter-spacing: 0.35em;
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-dark);
   font-weight: 600;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 .stitle {
   font-family: var(--font-names);
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
-  font-size: clamp(1.55rem, 4.6vw, 1.95rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(1.75rem, 5vw, 2.3rem);
+  letter-spacing: 0.04em;
   color: var(--text);
-  margin-bottom: 0.65rem;
-  line-height: 1.22;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
 }
 
 /* ─── RSVP NOTE ─── */
@@ -1115,13 +1161,13 @@ body {
 
 .rsvp-form__title {
   font-family: var(--font-names);
-  font-weight: 600;
-  font-size: clamp(1.2rem, 3.4vw, 1.45rem);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3.6vw, 1.6rem);
   color: var(--text);
-  line-height: 1.35;
+  line-height: 1.25;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   margin-bottom: 1.1rem;
 }
 
@@ -1135,14 +1181,16 @@ body {
   margin: 0 0 1.15rem;
 }
 
-.rsvp-label {
-  display: block;
+.rsvp-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.45;
-  margin-bottom: 0.45rem;
+  font-size: clamp(1.15rem, 3vw, 1.28rem);
+  font-weight: 500;
+  color: var(--body-read);
+  cursor: pointer;
+  line-height: 1.4;
 }
 
 .rsvp-label__hint {
@@ -1155,15 +1203,17 @@ body {
   margin-top: 0.25rem;
 }
 
-.rsvp-input {
+.rsvp-input,
+.rsvp-textarea {
   width: 100%;
-  padding: 0.65rem 0.85rem;
-  border: 1px solid var(--border);
+  padding: 0.75rem 0.95rem;
+  border: 1px solid rgba(212, 180, 131, 0.4);
   border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.88);
   font-family: var(--font-body);
-  font-size: clamp(1.06rem, 2.8vw, 1.22rem);
+  font-size: clamp(1.15rem, 3vw, 1.28rem);
   color: var(--text);
-  background: var(--bg);
+  line-height: 1.45;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1325,6 +1375,48 @@ body {
 
 .rsvp-submit--success:hover {
   background: #17522d !important;
+}
+
+/* ── Плавающая кнопка RSVP ── */
+.rsvp-float-btn {
+  position: fixed;
+  bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(139, 107, 63, 0.35), 0 2px 8px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rsvp-float-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 28px rgba(139, 107, 63, 0.45), 0 3px 12px rgba(0,0,0,0.2);
+}
+
+.rsvp-float-btn:active {
+  transform: translateX(-50%) scale(0.96);
+}
+
+/* Скрываем кнопку когда мы уже на RSVP секции */
+@media (prefers-reduced-motion: reduce) {
+  .rsvp-float-btn { display: none; }
 }
 
 .rsvp-submit__spinner {
@@ -1510,9 +1602,8 @@ code {
     margin: 0 auto;
   }
   .hero-photo {
-    min-height: 200px;
-    max-height: 68svh;
-    aspect-ratio: 10 / 14;
+    min-height: 85svh;
+    max-height: 95svh;
   }
   .hero-photo__img {
     object-position: center 12%;
@@ -1558,8 +1649,8 @@ code {
     margin: 0 auto;
   }
   .hero-photo {
-    max-height: 74svh;
-    aspect-ratio: 3 / 4;
+    min-height: 85svh;
+    max-height: 95svh;
   }
   .hero-photo__img {
     object-position: center 16%;
@@ -1583,8 +1674,8 @@ code {
     margin: 0 auto;
   }
   .hero-photo {
-    max-height: 76svh;
-    aspect-ratio: 3 / 4;
+    min-height: 85svh;
+    max-height: 95svh;
   }
   .hero-photo__img {
     object-position: center 22%;

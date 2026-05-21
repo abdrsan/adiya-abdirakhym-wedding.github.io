@@ -7,15 +7,18 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div class="page">
 <div class="bg-spin-layer" aria-hidden="true">
   <div class="bg-spin bg-spin--1"></div>
+  <div class="bg-spin bg-spin--2"></div>
   <div class="bg-spin bg-spin--3"></div>
+  <div class="bg-spin bg-spin--4"></div>
   <div class="bg-spin bg-spin--5"></div>
+  <div class="bg-spin bg-spin--6"></div>
 </div>
 <audio id="backgroundMusic" loop playsinline preload="metadata" hidden>
   <source src="assets/music/songjar.mp3" type="audio/mpeg">
@@ -23,28 +26,33 @@
 
 <!-- HERO: фото + имена на фото, таймер, дата, қала -->
 <section class="hero" id="hero">
-  <div class="hero-photo" id="hero-photo">
-    <!-- Қойыңыз: assets/hero.jpg (сурет жоқ болса, төменгі фон қалды) -->
-    <img class="hero-photo__img"
-         src="assets/hero.jpg"
-         alt="Әбдірахым мен Әдия"
-         width="1200"
-         height="1500"
-         fetchpriority="high"
-         onerror="this.closest('.hero-photo').classList.add('hero-photo--fallback')">
-    <div class="hero-photo__scrim" aria-hidden="true"></div>
+    <div class="hero-photo" id="hero-photo">
+      <!-- Қойыңыз: assets/hero.jpg (сурет жоқ болса, төменгі фон қалды) -->
+      <img class="hero-photo__img"
+           src="assets/hero.jpg"
+           alt="Әбдірахым мен Әдия"
+           width="1200"
+           height="1500"
+           fetchpriority="high"
+           onerror="this.closest('.hero-photo').classList.add('hero-photo--fallback')">
+      <div class="hero-photo__scrim" aria-hidden="true"></div>
 
-    <div class="hero-photo__content" data-r>
-      <p class="hero-photo__kicker">Үйлену тойына шақыру</p>
-      <div class="divl divl--on-photo"><div class="diam diam--on-photo"></div></div>
-      <div class="names names--on-photo">
-        Әбдірахым<br>
-        <span class="amp amp--on-photo">&amp;</span>
-        Әдия
+      <div class="hero-photo__content" data-r>
+        <p class="hero-photo__kicker">Үйлену тойына шақыру</p>
+        <div class="divl divl--on-photo"><div class="diam diam--on-photo"></div></div>
+        <div class="names names--on-photo">
+          Әбдірахым
+          <span class="amp amp--on-photo">&amp;</span>
+          Әдия
+        </div>
       </div>
-    </div>
-  </div>
 
+    </div>
+
+</section>
+
+<!-- Музыка — между hero и шақыру -->
+<section class="sec music-sec" data-r>
   <button type="button" class="music-hero-btn" id="musicToggle" aria-pressed="false" aria-label="Фондық әуен">
     <svg class="music-hero-btn__circle" viewBox="0 0 120 120" aria-hidden="true">
       <defs>
@@ -69,16 +77,6 @@
       </span>
     </span>
   </button>
-</section>
-
-<!-- Второе фото -->
-<section class="sec photo-sec" data-r>
-  <img class="photo-sec__img"
-       src="assets/photo2.jpg"
-       alt="Әбдірахым мен Әдия"
-       width="1200"
-       height="800"
-       onerror="this.style.display='none'">
 </section>
 
 <!-- Приглашение от родителей -->
@@ -246,7 +244,6 @@
   </svg>
 </div>
 </div><!-- .page -->
-
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -86,7 +86,7 @@
     let scrollRaf = null;
     let scrollLastTs = 0;
     /** Пикселей в секунду — автоскролл вниз, пока играет музыка (можно руками крутить страницу) */
-    const SCROLL_PX_PER_SEC = 42;
+    const SCROLL_PX_PER_SEC = 280;
     /** Пауза автоскролла после прокрутки вверх колёсиком / тачпадом */
     const USER_SCROLL_PAUSE_MS = 4500;
     let autoScrollPausedUntil = 0;
