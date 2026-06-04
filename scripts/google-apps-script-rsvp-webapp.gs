@@ -17,6 +17,7 @@ var RSVP_SHEET_NAME = 'Sheet1';
 
 function doGet(e) {
   try {
+    e = e || { parameter: {} };
     var data = e.parameter || {};
     var name = (data.name || '').toString().trim();
     var attendance = (data.attendance || '').toString().trim();
@@ -42,12 +43,14 @@ function doGet(e) {
     }
 
     ensureHeaderRow_(sh);
+    formatSheet_(sh);
 
     sh.appendRow([new Date(), name, attendance, guests]);
+    formatSheet_(sh);
 
     return jsonpOut({ ok: true, message: 'OK' }, data.callback);
   } catch (err) {
-    return jsonpOut({ ok: false, error: String(err.message || err) }, e.parameter && e.parameter.callback);
+    return jsonpOut({ ok: false, error: String(err.message || err) }, e && e.parameter && e.parameter.callback);
   }
 }
 
@@ -84,8 +87,10 @@ function doPost(e) {
     }
 
     ensureHeaderRow_(sh);
+    formatSheet_(sh);
 
     sh.appendRow([new Date(), name, attendance, guests]);
+    formatSheet_(sh);
 
     return jsonOut({ ok: true, message: 'OK' });
   } catch (err) {
@@ -102,6 +107,23 @@ function ensureHeaderRow_(sh) {
     header.setFontWeight('bold');
     header.setBackground('#eddfc8');
   }
+}
+
+function formatSheet_(sh) {
+  sh.getRange('A:A').setNumberFormat('dd.MM.yyyy HH:mm:ss');
+  sh.getRange('B:C').setNumberFormat('@');
+  sh.getRange('D:D').setNumberFormat('0');
+  sh.autoResizeColumns(1, 4);
+}
+
+function testFormatSheet() {
+  var ss = SpreadsheetApp.openById(RSVP_SPREADSHEET_ID);
+  var sh = ss.getSheetByName(RSVP_SHEET_NAME);
+  if (!sh) {
+    sh = ss.getSheets()[0];
+  }
+  ensureHeaderRow_(sh);
+  formatSheet_(sh);
 }
 
 function jsonOut(obj) {
