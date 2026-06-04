@@ -180,7 +180,6 @@
       document.removeEventListener("click", startMusic);
       document.removeEventListener("touchstart", startMusic);
       document.removeEventListener("keydown", startMusic);
-      document.removeEventListener("scroll", startMusic);
       document.removeEventListener("mousemove", startMusic);
     };
 
@@ -219,7 +218,6 @@
     document.addEventListener("click", startMusic, { once: true });
     document.addEventListener("touchstart", startMusic, { once: true, passive: true });
     document.addEventListener("keydown", startMusic, { once: true });
-    document.addEventListener("scroll", startMusic, { once: true, passive: true });
     document.addEventListener("mousemove", startMusic, { once: true, passive: true });
 
     setTimeout(() => {
@@ -251,8 +249,6 @@
         }
       );
     });
-
-    startSlowScroll();
 
     window.__weddingDisableMusicAutoScroll = function () {
       autoScrollPermanentlyDisabled = true;
