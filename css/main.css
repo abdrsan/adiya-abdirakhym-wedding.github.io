@@ -2,9 +2,6 @@
    ТОЙ ШАҚЫРУ — REDESIGNED STYLES
    ══════════════════════════════════════════ */
 
-/* Cormorant Garamond — elegant unified serif */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
-
 :root {
   /* Токены как у adiya-kyz-uzatu (ethno-gold luxury) */
   --bg:          #f8f5f0;
@@ -2845,5 +2842,82 @@ code {
       rgba(255, 255, 255, 0.96) 0%,
       rgba(255, 255, 255, 0.82) 44%,
       rgba(255, 255, 255, 0) 72%);
+  }
+}
+
+/* Device behavior fixes: laptop notice, phone scrolling, faster stable layout */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100svh;
+    overflow: hidden !important;
+  }
+
+  body {
+    display: grid !important;
+    place-items: center !important;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(0, 0, 0, 0.035), transparent 22rem),
+      radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.035), transparent 24rem),
+      #ffffff !important;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(0, 0, 0, 0.035), transparent 22rem),
+      radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.035), transparent 24rem) !important;
+    color: #111111 !important;
+    padding: 2rem !important;
+  }
+
+  .page {
+    display: none !important;
+  }
+
+  body::before {
+    content: "Сайт телефонға арналған\AОткройте приглашение с телефона";
+    white-space: pre-line;
+    display: block;
+    max-width: 40rem;
+    padding: 4rem 3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.22);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.22);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.06);
+    font-family: var(--font-body);
+    font-size: clamp(1.55rem, 3.2vw, 2.45rem);
+    line-height: 1.45;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  html,
+  body {
+    height: auto !important;
+    min-height: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  body::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .page {
+    display: block !important;
+    min-height: 100%;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
   }
 }
